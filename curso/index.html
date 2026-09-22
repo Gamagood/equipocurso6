@@ -19,6 +19,8 @@
     <!-- Fondo de partículas -->
     <canvas id="particulas"></canvas>
 
+    <div class="contenido-pagina">
+
     <main class="tarjeta">
 
         <div class="icono-perfil">
@@ -93,7 +95,66 @@
 
     </main>
 
-    <script src="scripts/script.js"></script>
+    <section class="seccion-calculadora" aria-labelledby="titulo-calculadora">
+        <div class="encabezado-calculadora">
+            <p class="saludo">HERRAMIENTA INTERACTIVA</p>
+            <h2 id="titulo-calculadora">Calculadora</h2>
+            <p>Realiza operaciones rápidas y consulta tus cálculos recientes.</p>
+        </div>
+
+        <div class="calculadora" role="application" aria-label="Calculadora básica">
+            <div class="calculadora-barra">
+                <span>Calculadora</span>
+                <div class="calculadora-acciones">
+                    <button type="button" id="borrar-ultimo" aria-label="Borrar último dígito" title="Borrar último dígito">
+                        <i class="fa-solid fa-delete-left" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" id="limpiar-historial" aria-label="Limpiar historial" title="Limpiar historial">
+                        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="historial" id="historial" aria-live="polite">
+                <span class="historial-vacio">El historial aparecerá aquí</span>
+            </div>
+
+            <div class="pantalla-calculadora">
+                <div class="operacion-actual" id="operacion-actual" aria-hidden="true"></div>
+                <output id="pantalla" aria-label="Resultado">0</output>
+            </div>
+
+            <div class="teclado-calculadora">
+                <button type="button" class="tecla tecla-funcion" data-valor="C">C</button>
+                <button type="button" class="tecla tecla-funcion" data-valor="±">±</button>
+                <button type="button" class="tecla tecla-funcion" data-valor="%">%</button>
+                <button type="button" class="tecla tecla-operador" data-valor="÷">÷</button>
+
+                <button type="button" class="tecla" data-valor="7">7</button>
+                <button type="button" class="tecla" data-valor="8">8</button>
+                <button type="button" class="tecla" data-valor="9">9</button>
+                <button type="button" class="tecla tecla-operador" data-valor="×">×</button>
+
+                <button type="button" class="tecla" data-valor="4">4</button>
+                <button type="button" class="tecla" data-valor="5">5</button>
+                <button type="button" class="tecla" data-valor="6">6</button>
+                <button type="button" class="tecla tecla-operador" data-valor="-">−</button>
+
+                <button type="button" class="tecla" data-valor="1">1</button>
+                <button type="button" class="tecla" data-valor="2">2</button>
+                <button type="button" class="tecla" data-valor="3">3</button>
+                <button type="button" class="tecla tecla-operador" data-valor="+">+</button>
+
+                <button type="button" class="tecla tecla-cero" data-valor="0">0</button>
+                <button type="button" class="tecla" data-valor=".">.</button>
+                <button type="button" class="tecla tecla-operador" data-valor="=">=</button>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+    <script src="script/script.js"></script>
 
 </body>
 </html>

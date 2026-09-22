@@ -9,10 +9,6 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     padding: 30px;
 
     background:
@@ -22,7 +18,15 @@ body {
 
     color: #111827;
 
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.contenido-pagina {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 
@@ -51,10 +55,10 @@ body {
 
 .tarjeta {
     position: relative;
-    z-index: 2;
 
     width: 100%;
     max-width: 720px;
+    margin: 0 auto;
 
     padding: 55px;
 
@@ -348,6 +352,188 @@ h2 i {
 
 
 /* ============================= */
+/* CALCULADORA */
+/* ============================= */
+
+.seccion-calculadora {
+    width: 100%;
+    margin: 70px auto 20px;
+    padding: 48px 30px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 25px 70px rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+.encabezado-calculadora {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.encabezado-calculadora h2 {
+    display: block;
+    margin-bottom: 8px;
+    color: #0f172a;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.encabezado-calculadora > p:last-child {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.calculadora {
+    width: min(100%, 340px);
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    background: #0f172a;
+    box-shadow: 0 22px 45px rgba(15, 23, 42, 0.25);
+}
+
+.calculadora-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.calculadora-acciones {
+    display: flex;
+    gap: 4px;
+}
+
+.calculadora-acciones button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 8px;
+    color: #94a3b8;
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+}
+
+.calculadora-acciones button:hover,
+.calculadora-acciones button:focus-visible {
+    color: #ffffff;
+    background: #1e293b;
+    outline: none;
+}
+
+.historial {
+    height: 58px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #1e293b;
+    color: #94a3b8;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: right;
+    scrollbar-width: thin;
+}
+
+.historial div {
+    white-space: nowrap;
+}
+
+.historial-vacio {
+    display: block;
+    padding-top: 10px;
+    color: #64748b;
+    text-align: center;
+}
+
+.pantalla-calculadora {
+    min-height: 92px;
+    margin-bottom: 12px;
+    padding: 14px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #020617;
+    text-align: right;
+}
+
+#pantalla {
+    display: block;
+    overflow: hidden;
+    color: #ffffff;
+    font-family: "Courier New", monospace;
+    font-size: 34px;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.operacion-actual {
+    min-height: 20px;
+    margin-bottom: 4px;
+    color: #60a5fa;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+}
+
+.teclado-calculadora {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+}
+
+.tecla {
+    height: 48px;
+    border: 0;
+    border-radius: 11px;
+    color: #f8fafc;
+    background: #334155;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s, background 0.2s, box-shadow 0.2s;
+}
+
+.tecla:hover {
+    background: #475569;
+}
+
+.tecla:active,
+.tecla.activa {
+    transform: scale(0.94);
+}
+
+.tecla:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.tecla-funcion {
+    color: #dbeafe;
+    background: #475569;
+}
+
+.tecla-operador {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.2);
+}
+
+.tecla-operador:hover {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+}
+
+.tecla-cero {
+    grid-column: span 2;
+}
+
+
+/* ============================= */
 /* RESPONSIVE */
 /* ============================= */
 
@@ -376,5 +562,14 @@ h2 i {
 
     .boton {
         width: 100%;
+    }
+
+    .seccion-calculadora {
+        margin-top: 35px;
+        padding: 38px 18px;
+    }
+
+    .calculadora {
+        padding: 14px;
     }
 }

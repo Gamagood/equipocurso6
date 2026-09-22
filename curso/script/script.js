@@ -139,3 +139,202 @@ function animar() {
 
 crearParticulas();
 animar();
+
+
+/* ============================= */
+/* CALCULADORA */
+/* ============================= */
+
+const pantalla = document.getElementById("pantalla");
+const operacionActual = document.getElementById("operacion-actual");
+const historialElemento = document.getElementById("historial");
+const teclas = document.querySelectorAll(".tecla");
+const MAXIMO_DIGITOS = 10;
+
+let valorPantalla = "0";
+let valorAnterior = null;
+let operador = null;
+let esperandoOperando = false;
+let historial = [];
+
+function formatearNumero(valor) {
+    if (Number.isNaN(valor) || !Number.isFinite(valor)) return "Error";
+
+    const texto = String(valor);
+    if (texto.length <= MAXIMO_DIGITOS) return texto;
+
+    if (texto.includes(".")) {
+        const parteEntera = texto.split(".")[0];
+        const decimalesDisponibles = MAXIMO_DIGITOS - parteEntera.length - 1;
+
+        if (decimalesDisponibles > 0) {
+            return valor.toFixed(decimalesDisponibles).replace(/\.?0+$/, "");
+        }
+    }
+
+    for (let precision = 5; precision >= 0; precision--) {
+        const exponencial = valor.toExponential(precision);
+        if (exponencial.length <= MAXIMO_DIGITOS) return exponencial;
+    }
+
+    return valor.toExponential(0);
+}
+
+function actualizarPantalla() {
+    pantalla.textContent = valorPantalla;
+    operacionActual.textContent = valorAnterior !== null && operador
+        ? `${formatearNumero(valorAnterior)} ${operador}`
+        : "";
+}
+
+function actualizarHistorial() {
+    if (historial.length === 0) {
+        historialElemento.innerHTML = '<span class="historial-vacio">El historial aparecerá aquí</span>';
+        return;
+    }
+
+    historialElemento.replaceChildren();
+    historial.slice(-4).forEach((entrada) => {
+        const linea = document.createElement("div");
+        linea.textContent = entrada;
+        historialElemento.appendChild(linea);
+    });
+    historialElemento.scrollTop = historialElemento.scrollHeight;
+}
+
+function ingresarNumero(numero) {
+    if (esperandoOperando || valorPantalla === "Error") {
+        valorPantalla = numero === "." ? "0." : numero;
+        esperandoOperando = false;
+    } else if (numero === ".") {
+        if (!valorPantalla.includes(".")) valorPantalla += ".";
+    } else {
+        const nuevoValor = valorPantalla === "0" ? numero : valorPantalla + numero;
+        const cantidadDigitos = nuevoValor.replace(/[.\-]/g, "").length;
+        if (cantidadDigitos <= MAXIMO_DIGITOS) valorPantalla = nuevoValor;
+    }
+
+    actualizarPantalla();
+}
+
+function calcular(primerValor, segundoValor, operacion) {
+    switch (operacion) {
+        case "+": return primerValor + segundoValor;
+        case "-": return primerValor - segundoValor;
+        case "×": return primerValor * segundoValor;
+        case "÷": return segundoValor === 0 ? NaN : primerValor / segundoValor;
+        default: return segundoValor;
+    }
+}
+
+function guardarEnHistorial(primerValor, segundoValor, operacion, resultado) {
+    const resultadoVisible = formatearNumero(resultado);
+    historial.push(`${formatearNumero(primerValor)} ${operacion} ${formatearNumero(segundoValor)} = ${resultadoVisible}`);
+    historial = historial.slice(-5);
+    actualizarHistorial();
+}
+
+function ingresarOperacion(nuevoOperador) {
+    const valorIngresado = Number.parseFloat(valorPantalla);
+    if (Number.isNaN(valorIngresado)) return;
+
+    if (valorAnterior === null) {
+        valorAnterior = valorIngresado;
+    } else if (operador && !esperandoOperando) {
+        const resultado = calcular(valorAnterior, valorIngresado, operador);
+        guardarEnHistorial(valorAnterior, valorIngresado, operador, resultado);
+        valorPantalla = formatearNumero(resultado);
+        valorAnterior = Number.isFinite(resultado) ? resultado : null;
+    }
+
+    operador = valorAnterior === null ? null : nuevoOperador;
+    esperandoOperando = true;
+    actualizarPantalla();
+}
+
+function obtenerResultado() {
+    if (valorAnterior === null || !operador || esperandoOperando) return;
+
+    const valorIngresado = Number.parseFloat(valorPantalla);
+    const resultado = calcular(valorAnterior, valorIngresado, operador);
+    guardarEnHistorial(valorAnterior, valorIngresado, operador, resultado);
+    valorPantalla = formatearNumero(resultado);
+    valorAnterior = null;
+    operador = null;
+    esperandoOperando = true;
+    actualizarPantalla();
+}
+
+function limpiarCalculadora() {
+    valorPantalla = "0";
+    valorAnterior = null;
+    operador = null;
+    esperandoOperando = false;
+    actualizarPantalla();
+}
+
+function borrarUltimo() {
+    if (esperandoOperando || valorPantalla === "Error") return;
+    valorPantalla = valorPantalla.length > 1 ? valorPantalla.slice(0, -1) : "0";
+    if (valorPantalla === "-") valorPantalla = "0";
+    actualizarPantalla();
+}
+
+function procesarEntrada(valor) {
+    if (/^\d$/.test(valor) || valor === ".") {
+        ingresarNumero(valor);
+    } else if (["+", "-", "×", "÷"].includes(valor)) {
+        ingresarOperacion(valor);
+    } else if (valor === "=") {
+        obtenerResultado();
+    } else if (valor === "C") {
+        limpiarCalculadora();
+    } else if (valor === "±") {
+        const numero = Number.parseFloat(valorPantalla);
+        if (!Number.isNaN(numero) && numero !== 0) valorPantalla = formatearNumero(numero * -1);
+        actualizarPantalla();
+    } else if (valor === "%") {
+        const numero = Number.parseFloat(valorPantalla);
+        if (!Number.isNaN(numero)) valorPantalla = formatearNumero(numero / 100);
+        actualizarPantalla();
+    }
+}
+
+teclas.forEach((tecla) => {
+    tecla.addEventListener("click", () => procesarEntrada(tecla.dataset.valor));
+});
+
+document.getElementById("borrar-ultimo").addEventListener("click", borrarUltimo);
+document.getElementById("limpiar-historial").addEventListener("click", () => {
+    historial = [];
+    actualizarHistorial();
+});
+
+document.addEventListener("keydown", (evento) => {
+    const equivalencias = {
+        Enter: "=",
+        "=": "=",
+        Escape: "C",
+        "*": "×",
+        "/": "÷",
+        ",": "."
+    };
+    const valor = equivalencias[evento.key] || evento.key;
+
+    if (evento.key === "Backspace") {
+        evento.preventDefault();
+        borrarUltimo();
+        return;
+    }
+
+    if (/^\d$/.test(valor) || [".", "+", "-", "×", "÷", "=", "C"].includes(valor)) {
+        evento.preventDefault();
+        procesarEntrada(valor);
+
+        const tecla = document.querySelector(`.tecla[data-valor="${CSS.escape(valor)}"]`);
+        if (tecla) {
+            tecla.classList.add("activa");
+            setTimeout(() => tecla.classList.remove("activa"), 120);
+        }
+    }
+});
