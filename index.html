@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatsune Miku Style</title>
+    <!-- Enlace al archivo de estilos separado -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Círculos luminosos de fondo al estilo Miku (Turquesa y Cyan) -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+    <main class="main-container">
+        
+        <!-- PRIMERA CAJA: Tu Nombre con temática Miku -->
+        <div class="card name-card">
+            <div class="miku-badge">01 - MIKU STYLE</div>
+            <h1 class="my-name">Tu Nombre Aquí</h1>
+            <div class="divider"></div>
+        </div>
+
+        <!-- SEGUNDA CAJA: Calculadora Horizontal y Compacta -->
+        <div class="card calculator-card">
+            <input type="text" id="display" class="calculator-display" readonly value="0">
+            
+            <div class="calculator-keys">
+                <button class="btn-action" onclick="clearDisplay()">C</button>
+                <button class="btn-action" onclick="deleteChar()">⌫</button>
+                <button class="btn-operator" onclick="appendCharacter('/')">÷</button>
+                <button class="btn-operator" onclick="appendCharacter('*')">×</button>
+
+                <button onclick="appendCharacter('7')">7</button>
+                <button onclick="appendCharacter('8')">8</button>
+                <button onclick="appendCharacter('9')">9</button>
+                <button class="btn-operator" onclick="appendCharacter('-')">-</button>
+
+                <button onclick="appendCharacter('4')">4</button>
+                <button onclick="appendCharacter('5')">5</button>
+                <button onclick="appendCharacter('6')">6</button>
+                <button class="btn-operator" onclick="appendCharacter('+')">+</button>
+
+                <button onclick="appendCharacter('1')">1</button>
+                <button onclick="appendCharacter('2')">2</button>
+                <button onclick="appendCharacter('3')">3</button>
+                <button class="btn-equal" onclick="calculateResult()">=</button>
+
+                <button class="btn-zero" onclick="appendCharacter('0')">0</button>
+                <button onclick="appendCharacter('.')">.</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Script de la calculadora -->
+    <script>
+        const display = document.getElementById('display');
+
+        function appendCharacter(char) {
+            if (display.value === '0' && char !== '.') {
+                display.value = char;
+            } else {
+                display.value += char;
+            }
+        }
+
+        function clearDisplay() {
+            display.value = '0';
+        }
+
+        function deleteChar() {
+            if (display.value.length > 1) {
+                display.value = display.value.slice(0, -1);
+            } else {
+                display.value = '0';
+            }
+        }
+
+        function calculateResult() {
+            try {
+                let expression = display.value.replace(/×/g, '*').replace(/÷/g, '/');
+                display.value = eval(expression);
+            } catch (error) {
+                display.value = 'Error';
+                setTimeout(clearDisplay, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
