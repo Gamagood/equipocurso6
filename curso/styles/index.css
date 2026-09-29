@@ -573,3 +573,43 @@ h2 i {
         padding: 14px;
     }
 }
+
+.navbar {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 920px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    padding: 16px 20px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(12px);
+}
+
+.navbar a {
+    color: #1e293b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.navbar a:hover {
+    color: #2563eb;
+}
