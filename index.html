@@ -11,8 +11,625 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- CSS Gamaliel -->
-    <link rel="stylesheet" href="curso/styles/index.css">
+    <!-- Estilos de Gamaliel integrados -->
+    <style>
+#gamaliel,
+#gamaliel * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#gamaliel {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at 20% 20%, #e9f2ff 0, transparent 35%),
+        radial-gradient(circle at 80% 80%, #dbeafe 0, transparent 35%),
+        #ffffff;
+
+    color: #111827;
+
+    overflow-x: hidden;
+}
+
+#gamaliel .contenido-pagina {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+
+/* ============================= */
+/* PARTICULAS */
+/* ============================= */
+
+#gamaliel #particulas {
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* ============================= */
+/* TARJETA */
+/* ============================= */
+
+#gamaliel .tarjeta {
+    position: relative;
+
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+
+    padding: 55px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.12),
+        0 5px 20px rgba(37, 99, 235, 0.08);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* Línea superior */
+
+#gamaliel .tarjeta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 120px;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    border-radius: 0 0 10px 10px;
+}
+
+
+/* ============================= */
+/* ICONO PERFIL */
+/* ============================= */
+
+#gamaliel .icono-perfil {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 22px;
+
+    color: white;
+
+    font-size: 35px;
+
+    background: linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb,
+        #38bdf8
+    );
+
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+
+    transform: rotate(-3deg);
+}
+
+#gamaliel .icono-perfil i {
+    transform: rotate(3deg);
+}
+
+
+/* ============================= */
+/* TEXTO */
+/* ============================= */
+
+#gamaliel .saludo {
+    color: #2563eb;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+#gamaliel h1 {
+    font-size: 38px;
+
+    color: #0f172a;
+
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+}
+
+#gamaliel h1 span {
+    display: block;
+
+    color: #2563eb;
+}
+
+#gamaliel h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    color: #475569;
+
+    margin-bottom: 25px;
+}
+
+#gamaliel h2 i {
+    color: #2563eb;
+}
+
+#gamaliel .descripcion {
+    max-width: 520px;
+
+    margin: auto;
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ============================= */
+/* DATOS */
+/* ============================= */
+
+#gamaliel .datos {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+#gamaliel .dato {
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    transition: 0.3s;
+}
+
+#gamaliel .dato:hover {
+    transform: translateY(-5px);
+
+    border-color: #93c5fd;
+
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+}
+
+#gamaliel .dato-icono {
+    min-width: 42px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 17px;
+}
+
+#gamaliel .dato small {
+    font-size: 9px;
+
+    color: #94a3b8;
+
+    letter-spacing: 1px;
+}
+
+#gamaliel .dato p {
+    margin-top: 4px;
+
+    color: #1e293b;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+#gamaliel .botones {
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+#gamaliel .boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+#gamaliel .principal {
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb
+    );
+
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+#gamaliel .principal:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+}
+
+#gamaliel .principal:hover i {
+    transform: translateX(4px);
+}
+
+#gamaliel .principal i {
+    transition: 0.3s;
+}
+
+#gamaliel .secundario {
+    color: #2563eb;
+
+    background: white;
+
+    border: 1px solid #bfdbfe;
+}
+
+#gamaliel .secundario:hover {
+    background: #eff6ff;
+
+    transform: translateY(-3px);
+}
+
+
+/* ============================= */
+/* CALCULADORA */
+/* ============================= */
+
+#gamaliel .seccion-calculadora {
+    width: 100%;
+    margin: 70px auto 20px;
+    padding: 48px 30px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 25px 70px rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+#gamaliel .encabezado-calculadora {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#gamaliel .encabezado-calculadora h2 {
+    display: block;
+    margin-bottom: 8px;
+    color: #0f172a;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#gamaliel .encabezado-calculadora > p:last-child {
+    color: #64748b;
+    font-size: 15px;
+}
+
+#gamaliel .calculadora {
+    width: min(100%, 340px);
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    background: #0f172a;
+    box-shadow: 0 22px 45px rgba(15, 23, 42, 0.25);
+}
+
+#gamaliel .calculadora-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#gamaliel .calculadora-acciones {
+    display: flex;
+    gap: 4px;
+}
+
+#gamaliel .calculadora-acciones button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 8px;
+    color: #94a3b8;
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+}
+
+#gamaliel .calculadora-acciones button:hover,
+#gamaliel .calculadora-acciones button:focus-visible {
+    color: #ffffff;
+    background: #1e293b;
+    outline: none;
+}
+
+#gamaliel .historial {
+    height: 58px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #1e293b;
+    color: #94a3b8;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: right;
+    scrollbar-width: thin;
+}
+
+#gamaliel .historial div {
+    white-space: nowrap;
+}
+
+#gamaliel .historial-vacio {
+    display: block;
+    padding-top: 10px;
+    color: #64748b;
+    text-align: center;
+}
+
+#gamaliel .pantalla-calculadora {
+    min-height: 92px;
+    margin-bottom: 12px;
+    padding: 14px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #020617;
+    text-align: right;
+}
+
+#gamaliel #pantalla {
+    display: block;
+    overflow: hidden;
+    color: #ffffff;
+    font-family: "Courier New", monospace;
+    font-size: 34px;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#gamaliel .operacion-actual {
+    min-height: 20px;
+    margin-bottom: 4px;
+    color: #60a5fa;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+}
+
+#gamaliel .teclado-calculadora {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+}
+
+#gamaliel .tecla {
+    height: 48px;
+    border: 0;
+    border-radius: 11px;
+    color: #f8fafc;
+    background: #334155;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s, background 0.2s, box-shadow 0.2s;
+}
+
+#gamaliel .tecla:hover {
+    background: #475569;
+}
+
+#gamaliel .tecla:active,
+#gamaliel .tecla.activa {
+    transform: scale(0.94);
+}
+
+#gamaliel .tecla:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+#gamaliel .tecla-funcion {
+    color: #dbeafe;
+    background: #475569;
+}
+
+#gamaliel .tecla-operador {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.2);
+}
+
+#gamaliel .tecla-operador:hover {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+}
+
+#gamaliel .tecla-cero {
+    grid-column: span 2;
+}
+
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 650px) {
+
+    #gamaliel {
+        padding: 20px;
+        overflow: auto;
+    }
+
+    #gamaliel .tarjeta {
+        padding: 40px 25px;
+    }
+
+    #gamaliel h1 {
+        font-size: 29px;
+    }
+
+    #gamaliel .datos {
+        grid-template-columns: 1fr;
+    }
+
+    #gamaliel .botones {
+        flex-direction: column;
+    }
+
+    #gamaliel .boton {
+        width: 100%;
+    }
+
+    #gamaliel .seccion-calculadora {
+        margin-top: 35px;
+        padding: 38px 18px;
+    }
+
+    #gamaliel .calculadora {
+        padding: 14px;
+    }
+}
+
+#gamaliel .navbar {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 920px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    padding: 16px 20px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(12px);
+}
+
+#gamaliel .navbar a {
+    color: #1e293b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+#gamaliel .navbar a:hover {
+    color: #2563eb;
+}
+    </style>
 
     <!-- CSS Andrés -->
     <link rel="stylesheet" href="cursolunes/style.css">
@@ -304,9 +921,357 @@
     </section>
 
 
-    <script src="curso/script/script.js"></script>
+    <!-- JavaScript de Gamaliel integrado -->
+    <script>
+(() => {
+const canvas = document.getElementById("particulas");
+const ctx = canvas.getContext("2d");
+
+let particulas = [];
+
+function ajustarCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+ajustarCanvas();
+
+window.addEventListener("resize", ajustarCanvas);
+
+
+class Particula {
+
+    constructor() {
+
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+
+        this.radio = Math.random() * 2 + 1;
+
+        this.velocidadX = (Math.random() - 0.5) * 0.5;
+        this.velocidadY = (Math.random() - 0.5) * 0.5;
+
+        this.opacidad = Math.random() * 0.4 + 0.1;
+    }
+
+
+    actualizar() {
+
+        this.x += this.velocidadX;
+        this.y += this.velocidadY;
+
+        if (this.x < 0 || this.x > canvas.width) {
+            this.velocidadX *= -1;
+        }
+
+        if (this.y < 0 || this.y > canvas.height) {
+            this.velocidadY *= -1;
+        }
+    }
+
+
+    dibujar() {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.radio,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = `rgba(0, 0, 0, ${this.opacidad})`;
+
+        ctx.fill();
+    }
+}
+
+
+function crearParticulas() {
+
+    particulas = [];
+
+    for (let i = 0; i < 80; i++) {
+        particulas.push(new Particula());
+    }
+}
+
+
+function conectarParticulas() {
+
+    for (let i = 0; i < particulas.length; i++) {
+
+        for (let j = i + 1; j < particulas.length; j++) {
+
+            let dx = particulas[i].x - particulas[j].x;
+            let dy = particulas[i].y - particulas[j].y;
+
+            let distancia = Math.sqrt(
+                dx * dx + dy * dy
+            );
+
+            if (distancia < 110) {
+
+                let opacidad =
+                    1 - distancia / 110;
+
+                ctx.beginPath();
+
+                ctx.strokeStyle =
+                    `rgba(0, 0, 0, ${opacidad * 0.12})`;
+
+                ctx.lineWidth = 1;
+
+                ctx.moveTo(
+                    particulas[i].x,
+                    particulas[i].y
+                );
+
+                ctx.lineTo(
+                    particulas[j].x,
+                    particulas[j].y
+                );
+
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+
+function animar() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particulas.forEach(particula => {
+
+        particula.actualizar();
+        particula.dibujar();
+
+    });
+
+    conectarParticulas();
+
+    requestAnimationFrame(animar);
+}
+
+
+crearParticulas();
+animar();
+
+
+/* ============================= */
+/* CALCULADORA */
+/* ============================= */
+
+const pantalla = document.getElementById("pantalla");
+const operacionActual = document.getElementById("operacion-actual");
+const historialElemento = document.getElementById("historial");
+const teclas = document.querySelectorAll(".tecla");
+const MAXIMO_DIGITOS = 10;
+
+let valorPantalla = "0";
+let valorAnterior = null;
+let operador = null;
+let esperandoOperando = false;
+let historial = [];
+
+function formatearNumero(valor) {
+    if (Number.isNaN(valor) || !Number.isFinite(valor)) return "Error";
+
+    const texto = String(valor);
+    if (texto.length <= MAXIMO_DIGITOS) return texto;
+
+    if (texto.includes(".")) {
+        const parteEntera = texto.split(".")[0];
+        const decimalesDisponibles = MAXIMO_DIGITOS - parteEntera.length - 1;
+
+        if (decimalesDisponibles > 0) {
+            return valor.toFixed(decimalesDisponibles).replace(/\.?0+$/, "");
+        }
+    }
+
+    for (let precision = 5; precision >= 0; precision--) {
+        const exponencial = valor.toExponential(precision);
+        if (exponencial.length <= MAXIMO_DIGITOS) return exponencial;
+    }
+
+    return valor.toExponential(0);
+}
+
+function actualizarPantalla() {
+    pantalla.textContent = valorPantalla;
+    operacionActual.textContent = valorAnterior !== null && operador
+        ? `${formatearNumero(valorAnterior)} ${operador}`
+        : "";
+}
+
+function actualizarHistorial() {
+    if (historial.length === 0) {
+        historialElemento.innerHTML = '<span class="historial-vacio">El historial aparecerá aquí</span>';
+        return;
+    }
+
+    historialElemento.replaceChildren();
+    historial.slice(-4).forEach((entrada) => {
+        const linea = document.createElement("div");
+        linea.textContent = entrada;
+        historialElemento.appendChild(linea);
+    });
+    historialElemento.scrollTop = historialElemento.scrollHeight;
+}
+
+function ingresarNumero(numero) {
+    if (esperandoOperando || valorPantalla === "Error") {
+        valorPantalla = numero === "." ? "0." : numero;
+        esperandoOperando = false;
+    } else if (numero === ".") {
+        if (!valorPantalla.includes(".")) valorPantalla += ".";
+    } else {
+        const nuevoValor = valorPantalla === "0" ? numero : valorPantalla + numero;
+        const cantidadDigitos = nuevoValor.replace(/[.\-]/g, "").length;
+        if (cantidadDigitos <= MAXIMO_DIGITOS) valorPantalla = nuevoValor;
+    }
+
+    actualizarPantalla();
+}
+
+function calcular(primerValor, segundoValor, operacion) {
+    switch (operacion) {
+        case "+": return primerValor + segundoValor;
+        case "-": return primerValor - segundoValor;
+        case "×": return primerValor * segundoValor;
+        case "÷": return segundoValor === 0 ? NaN : primerValor / segundoValor;
+        default: return segundoValor;
+    }
+}
+
+function guardarEnHistorial(primerValor, segundoValor, operacion, resultado) {
+    const resultadoVisible = formatearNumero(resultado);
+    historial.push(`${formatearNumero(primerValor)} ${operacion} ${formatearNumero(segundoValor)} = ${resultadoVisible}`);
+    historial = historial.slice(-5);
+    actualizarHistorial();
+}
+
+function ingresarOperacion(nuevoOperador) {
+    const valorIngresado = Number.parseFloat(valorPantalla);
+    if (Number.isNaN(valorIngresado)) return;
+
+    if (valorAnterior === null) {
+        valorAnterior = valorIngresado;
+    } else if (operador && !esperandoOperando) {
+        const resultado = calcular(valorAnterior, valorIngresado, operador);
+        guardarEnHistorial(valorAnterior, valorIngresado, operador, resultado);
+        valorPantalla = formatearNumero(resultado);
+        valorAnterior = Number.isFinite(resultado) ? resultado : null;
+    }
+
+    operador = valorAnterior === null ? null : nuevoOperador;
+    esperandoOperando = true;
+    actualizarPantalla();
+}
+
+function obtenerResultado() {
+    if (valorAnterior === null || !operador || esperandoOperando) return;
+
+    const valorIngresado = Number.parseFloat(valorPantalla);
+    const resultado = calcular(valorAnterior, valorIngresado, operador);
+    guardarEnHistorial(valorAnterior, valorIngresado, operador, resultado);
+    valorPantalla = formatearNumero(resultado);
+    valorAnterior = null;
+    operador = null;
+    esperandoOperando = true;
+    actualizarPantalla();
+}
+
+function limpiarCalculadora() {
+    valorPantalla = "0";
+    valorAnterior = null;
+    operador = null;
+    esperandoOperando = false;
+    actualizarPantalla();
+}
+
+function borrarUltimo() {
+    if (esperandoOperando || valorPantalla === "Error") return;
+    valorPantalla = valorPantalla.length > 1 ? valorPantalla.slice(0, -1) : "0";
+    if (valorPantalla === "-") valorPantalla = "0";
+    actualizarPantalla();
+}
+
+function procesarEntrada(valor) {
+    if (/^\d$/.test(valor) || valor === ".") {
+        ingresarNumero(valor);
+    } else if (["+", "-", "×", "÷"].includes(valor)) {
+        ingresarOperacion(valor);
+    } else if (valor === "=") {
+        obtenerResultado();
+    } else if (valor === "C") {
+        limpiarCalculadora();
+    } else if (valor === "±") {
+        const numero = Number.parseFloat(valorPantalla);
+        if (!Number.isNaN(numero) && numero !== 0) valorPantalla = formatearNumero(numero * -1);
+        actualizarPantalla();
+    } else if (valor === "%") {
+        const numero = Number.parseFloat(valorPantalla);
+        if (!Number.isNaN(numero)) valorPantalla = formatearNumero(numero / 100);
+        actualizarPantalla();
+    }
+}
+
+teclas.forEach((tecla) => {
+    tecla.addEventListener("click", () => procesarEntrada(tecla.dataset.valor));
+});
+
+document.getElementById("borrar-ultimo").addEventListener("click", borrarUltimo);
+document.getElementById("limpiar-historial").addEventListener("click", () => {
+    historial = [];
+    actualizarHistorial();
+});
+
+document.addEventListener("keydown", (evento) => {
+    const equivalencias = {
+        Enter: "=",
+        "=": "=",
+        Escape: "C",
+        "*": "×",
+        "/": "÷",
+        ",": "."
+    };
+    const valor = equivalencias[evento.key] || evento.key;
+
+    if (evento.key === "Backspace") {
+        evento.preventDefault();
+        borrarUltimo();
+        return;
+    }
+
+    if (/^\d$/.test(valor) || [".", "+", "-", "×", "÷", "=", "C"].includes(valor)) {
+        evento.preventDefault();
+        procesarEntrada(valor);
+
+        const tecla = document.querySelector(`.tecla[data-valor="${CSS.escape(valor)}"]`);
+        if (tecla) {
+            tecla.classList.add("activa");
+            setTimeout(() => tecla.classList.remove("activa"), 120);
+        }
+    }
+});
+
+
+})();
+    </script>
 
 </body>
 </html>
+
+
 
 
