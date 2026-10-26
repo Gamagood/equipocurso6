@@ -790,8 +790,249 @@
 }
     </style>
 
-    <!-- CSS Andrés -->
-    <link rel="stylesheet" href="cursolunes/style.css">
+    <!-- Estilos generales y de Andrés integrados -->
+    <style>
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    background: #050914;
+}
+body > nav {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px;
+    background: rgba(5, 9, 20, 0.94);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+}
+body > nav a {
+    color: #e2e8f0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+}
+body > nav a:hover {
+    color: #38bdf8;
+}
+
+#andres,
+#andres * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#andres {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #172033;
+}
+
+
+/* NAVBAR DEL EQUIPO */
+
+#andres .navbar-equipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    padding: 16px 20px;
+
+    background-color: #020617;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+#andres .navbar-equipo a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+#andres .navbar-equipo a:hover {
+    color: #38bdf8;
+}
+
+
+/* MENÚ PERSONAL DE ANDRÉS */
+
+#andres .andres-header {
+    background-color: #0f172a;
+    padding: 20px 8%;
+}
+
+#andres .andres-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#andres .andres-header nav h2 {
+    color: white;
+    font-size: 24px;
+}
+
+#andres .andres-header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+#andres .andres-header nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#andres .andres-header nav ul li a:hover {
+    color: #38bdf8;
+}
+
+
+/* INICIO */
+
+#andres .inicio {
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 8%;
+
+    background-color: #0f172a;
+    color: white;
+}
+
+#andres .contenido {
+    max-width: 700px;
+}
+
+#andres .saludo {
+    color: #38bdf8;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+#andres h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+#andres h1 span {
+    color: #38bdf8;
+}
+
+#andres .descripcion {
+    color: #cbd5e1;
+    font-size: 19px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+
+/* BOTÓN */
+
+#andres button {
+    background-color: #38bdf8;
+    color: #0f172a;
+
+    border: none;
+    padding: 14px 28px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+#andres button:hover {
+    background-color: #7dd3fc;
+}
+
+
+/* SOBRE MÍ */
+
+#andres .sobre-mi {
+    max-width: 900px;
+    margin: 0 auto;
+
+    padding: 80px 30px;
+
+    text-align: center;
+}
+
+#andres .sobre-mi h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#andres .sobre-mi p {
+    color: #64748b;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* FOOTER */
+
+#andres .andres-footer {
+    background-color: #020617;
+    color: #94a3b8;
+
+    text-align: center;
+
+    padding: 25px;
+    font-size: 14px;
+}
+
+
+/* DISEÑO PARA CELULAR */
+
+@media (max-width: 700px) {
+
+    #andres .navbar-equipo {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    #andres .andres-header nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #andres .andres-header nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #andres h1 {
+        font-size: 42px;
+    }
+
+    #andres .inicio {
+        padding: 60px 8%;
+    }
+
+}
+
+    </style>
 </head>
 
 <body>
@@ -1490,6 +1731,8 @@ document.addEventListener("keydown", (evento) => {
 
 </body>
 </html>
+
+
 
 
 
