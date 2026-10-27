@@ -1,0 +1,32 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: block;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px;
+  background: rgba(5, 9, 20, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+a {
+  color: #e2e8f0;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #38bdf8;
+}
+
+@media (max-width: 500px) {
+  nav {
+    gap: 18px;
+  }
+}
